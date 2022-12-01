@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const variantSchema = new Schema(
+const productSchema = new Schema(
 	{
 		name: {
 			type: String,
@@ -14,4 +14,4 @@ const variantSchema = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = model('variant', variantSchema);
+module.exports = model('product', productSchema);

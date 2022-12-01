@@ -1,11 +1,11 @@
 'use strict';
 
-const Variant = require('../models/variant_schema');
+const Product = require('../models/product_schema');
 
 const createData = (req, res) => {
-    Variant.create(req.body)
+  Product.create(req.body)
     .then((data) => {
-      console.log('New Variant Created!', data);
+      console.log('New Product Created!', data);
       res.status(201).json(data);
     })
     .catch((err) => {
@@ -20,7 +20,7 @@ const createData = (req, res) => {
 };
 
 const readData = (req, res) => {
-    Variant.find()
+  Product.find()
     .then((data) => {
       res.status(200).json(data);
     })
@@ -31,12 +31,12 @@ const readData = (req, res) => {
 };
 
 const updateData = (req, res) => {
-    Variant.findByIdAndUpdate(req.params.id, req.body, {
+    Product.findByIdAndUpdate(req.params.id, req.body, {
     useFindAndModify: false,
     new: true,
   })
     .then((data) => {
-      console.log('Variant updated!');
+      console.log('Product updated!');
       res.status(201).json(data);
     })
     .catch((err) => {
@@ -51,15 +51,15 @@ const updateData = (req, res) => {
 };
 
 const deleteData = (req, res) => {
-    Variant.findById(req.params.id)
+    Product.findById(req.params.id)
     .then((data) => {
       if (!data) {
-        throw new Error('Variant not available');
+        throw new Error('Product not available');
       }
       return data.remove();
     })
     .then((data) => {
-      console.log('Variant removed!');
+      console.log('Product removed!');
       res.status(200).json(data);
     })
     .catch((err) => {
